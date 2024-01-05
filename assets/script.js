@@ -5,74 +5,32 @@ function dateToday() {
 }
 dateToday();
 
-
-
-
-// function addTimeBlockRows() {
-//     // Add row
-//     $('.time-block').append('<form class="row">');
-//     // Hour
-//     $('.row').append('<div class="hour col-2">');
-//     $('.hour').text(timeSlots[0].name);
-//     // Text area
-//     $('.row').append('<textarea class="present col-8" name="event-text" rows="3">');
-//     // Submit button
-//     $('.row').append('<input class="saveBtn col-2" type="submit">');
-// }
-
-// Add time block div within container div
-//$('.container').append('<div class="time-block">');
-// Add correct number of time block rows
-//addTimeBlockRows();
-
-
-
-
-// $.each(timeSlots, function(index, value) {
-//     // Add row
-//     $('.time-block').append('<form class="row">');
-//     // Hour
-//     $('.row').append('<div class="hour col-2">');
-//     $('.hour').text(timeSlots[index].name);
-//     // Text area
-//     $('.row').append('<textarea class="present col-8" name="event-text" rows="3">');
-//     // Submit button
-//     $('.row').append('<input class="saveBtn col-2" type="submit">');
-// });
-
-// timeSlots.forEach(function(timeSlot, i) {
-//     // Add row
-//     $('.container').append('<form class="row">');
-//     // Hour
-//     $('.row').append('<div class="hour col-2">');
-//     $('.hour').text(timeSlots[i].name);
-//     // Text area
-//     $('.row').append('<textarea class="present col-8" name="event-text" rows="3">');
-//     // Submit button
-//     $('.row').append('<input class="saveBtn col-2" type="submit">');
-// });
-
-
-// numbers.forEach(function(number) {
-//     console.log(number);
-// })
-
-// // timeSlots.forEach(function(timeSlot) {
-// //     console.log(timeSlot.name);
-// // });
-
-// function timeSlots(slot, index, arr) {
-
-// }
-
-
+// Function to add time slots to container div in index.HTML
 timeSlots.forEach(function(timeSlot) {
-    var timeRow = $('<form class="row">');
-    $('.container').append(timeRow);
+    // Add class to form tag and append to container div 
+    var row = $('<form class="row">');
+    $('.container').append(row);
+
+    // Add classes and text to div tag
     var hour = $('<div class="hour col-2">').text(timeSlot.name);
-    var eventInput = $('<textarea class="present col-8" name="event-text" rows="3">');
-    var button = $('<input class="saveBtn col-2" type="submit">');
-    timeRow.append(hour, eventInput, button);
+
+    // Check past/present/future and assign class accordingly
+    var currentHour = dayjs().format('HH');
+    var plannerHour = timeSlot.hour;
+    if (plannerHour === currentHour) {
+        var eventInput = $('<textarea class="present col-8" name="event-text" rows="3">');
+    } else if (plannerHour < currentHour) {
+        eventInput = $('<textarea class="past col-8" name="event-text" rows="3">');
+    } else {
+        eventInput = $('<textarea class="future col-8" name="event-text" rows="3">');
+    };
+
+    // Add classes to submit button
+    var submitButton = $('<input class="saveBtn col-2" type="submit">');
+
+    // Append to form tag
+    row.append(hour, eventInput, submitButton);
 });
+
 
 
