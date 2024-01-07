@@ -7,13 +7,35 @@ $( document ).ready(function() {
     }
     dateToday();
 
-    // Update current hour every 30 mins to update past/present/future classes
-    // function checkTime() {
-    //     currentHour = dayjs().format('HH');
-    // }
-    // setInterval(checkTime, 1000);
-    // console.log();
-    // // 1800000
+    function checkLocalStorage() {
+        var getTimeSlots = JSON.parse(localStorage.getItem('userInputs'));
+       
+            
+            $('#input').text(getTimeSlots[0].input);
+           
+           
+        
+        
+       }
+
+        
+        //console.log(getTimeSlots[0].input);
+    //     if (getTimeSlots) {
+    //         timeSlots.forEach(function(timeSlot) {
+    //             timeSlot.input.push(getTimeSlots);
+    //         });
+    //         }
+    //    console.log(timeSlots);     
+       
+        
+    
+    
+
+    
+    
+
+
+   
 
     // Function to add time slots to container div in index.HTML
     timeSlots.forEach(function(timeSlot) {
@@ -51,49 +73,22 @@ $( document ).ready(function() {
     });
 
     
-
+    function getSetLocalStorage() {
+        localStorage.setItem('userInputs', JSON.stringify(timeSlots));
+        JSON.parse(localStorage.getItem('userInputs'));
+    };
     
+
+   
 
   
-
     
+    checkLocalStorage();
+   
+
+ 
     $('.saveBtn').on('click', (event) => {
         event.preventDefault();
-        //var userInputs = [];
-        // Update input fields in timeslots.js
-        for (var i=0; i < timeSlots.length; i++) {
-            var userInput = $(event.currentTarget).prev().val();
-            var userInputIndex = $(event.currentTarget).attr('index');
-            if (userInput) {
-                timeSlots[userInputIndex].input = userInput;
-            } else {
-                timeSlots[userInputIndex].input = '';
-            };
-            //userInputs.push(timeSlots[i].input);
-        };
-        
-        //console.log(userInputs);
-        localStorage.setItem('userInputs', JSON.stringify(timeSlots));
-        //localStorage.getItem(userInputs);
-    });
-
-    // $('.saveBtn').on('click', (event) => {
-    //     event.preventDefault();
-        
-    //     // Update input fields in timeslots.js
-    //     var textInput = $(this).siblings("input").attr("index");
-    //     var textVal = $(this).siblings("input").val();
-    //     localStorage.setItem(textInput, textVal);
-    //     var lsVal = localStorage.getItem(textInput);
-    //     $(this).siblings("input").text(lsVal);
-    // });
-
-
-
-
-    $('.saveBtn').on('click', (event) => {
-        event.preventDefault();
-       
         // Update input fields in timeslots.js
         for (var i=0; i < timeSlots.length; i++) {
             var userInput = $(event.currentTarget).prev().val();
@@ -105,34 +100,13 @@ $( document ).ready(function() {
             };
             
         };
-        
-        // console.log(timeSlots);
-
         getSetLocalStorage();
-       
-        
-        
 
-        // for (var i=0; i < localStorage.length; i++) {
-        //     var key = localStorage.timeSlots[i];
-        //     var item = JSON.parse(localStorage.getItem(key));
-        // }
 
-        // var test = [3, 56, 56, 2543];
-
-        // var stringifyTest = JSON.stringify(test);
-        // localStorage.setItem('userInputs', stringifyTest);
-
-       
     });
 
-    function getSetLocalStorage() {
-        localStorage.setItem('userInputs', JSON.stringify(timeSlots));
-        JSON.parse(localStorage.getItem('userInputs'));
-    }
+  
     
-    
-
    
 
     
