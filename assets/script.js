@@ -37,7 +37,7 @@ $( document ).ready(function() {
         } else {
             eventInput = $('<textarea id="input" class="future col-10" name="event-text" rows="3">');
         };
-        eventInput.attr('index', timeSlot.slotNumber);
+        eventInput.attr('indexpov', timeSlot.slotNumber);
 
         // Add attributes to submit button, add index, remove border
         var submitButton = $('<input class="saveBtn col-1" type="submit" value="Save">').attr('index', timeSlot.slotNumber);
@@ -132,12 +132,15 @@ $( document ).ready(function() {
         // var userInputIndex = $('#input').attr('index');
         // arr.splice(userInputIndex, 1, userInput)
 
-        console.log($(event.currentTarget).attr('index'));
+        var index = $(event.currentTarget).attr('index');
+        var prev = $(event.currentTarget).prev().val();
+
+        console.log(prev);
+
+
        
 
 
-        console.log(userInput);
-      //  console.log(userInputTimeSlot);
         console.log(arr);
         
     });
