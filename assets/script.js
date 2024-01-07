@@ -121,22 +121,14 @@ $( document ).ready(function() {
 
     $('.saveBtn').on('click', (event) => {
         event.preventDefault();
-        var arr = ['', '', '', '', '', '', '', '', ''];
-        
-        
-       
-        
-
-        var userInputIndex = $(event.currentTarget).attr('index');
-        var userInput = $(event.currentTarget).prev().val();
-
-        
-
-       arr.splice(userInputIndex, 1, userInput);
-       console.log(arr);
-
-       
-        
+        for (var i=0; i < timeSlots.length; i++) {
+            var userInput = $(event.currentTarget).prev().val();
+            var userInputIndex = $(event.currentTarget).attr('index');
+            if (userInput) {
+                timeSlots[userInputIndex].input = userInput;
+            }
+        };
+        console.log(timeSlots);
     });
 
     
