@@ -124,24 +124,18 @@ $( document ).ready(function() {
         var arr = ['', '', '', '', '', '', '', '', ''];
         
         
-        // var saveArray = $('#input').attr('name');
-        // saveArray.push(userInput);
+       
+        
+
+        var userInputIndex = $(event.currentTarget).attr('index');
+        var userInput = $(event.currentTarget).prev().val();
+
+        
+
+       arr.splice(userInputIndex, 1, userInput);
+       console.log(arr);
 
        
-        // var userInput = $('#input').val();
-        // var userInputIndex = $('#input').attr('index');
-        // arr.splice(userInputIndex, 1, userInput)
-
-        var index = $(event.currentTarget).attr('index');
-        var prev = $(event.currentTarget).prev().val();
-
-        console.log(prev);
-
-
-       
-
-
-        console.log(arr);
         
     });
 
