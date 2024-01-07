@@ -37,7 +37,6 @@ $( document ).ready(function() {
         } else {
             eventInput = $('<textarea id="input" class="future col-10" name="event-text" rows="3">');
         };
-        eventInput.attr('indexpov', timeSlot.slotNumber);
 
         // Add attributes to submit button, add index, remove border
         var submitButton = $('<input class="saveBtn col-1" type="submit" value="Save">').attr('index', timeSlot.slotNumber);
@@ -49,78 +48,19 @@ $( document ).ready(function() {
         
         // Append to form tag
         row.append(hour, eventInput, submitButton);
-
-
-        
     });
 
     
-    // Add input to array
-    
-    // timeSlots.forEach(function(timeSlot) {
-        
-    // })
-
-
 
     
 
-    // localStorage.setItem(key, value);
-
-    // $('.saveBtn').on('click', (event) => {
-    //     event.preventDefault();
-
-    //     // for (var i=0; i < timeSlots.length; i++) {
-    //         timeSlots.input
-    //         var inputArr = [];
-    //         var formInput = $('#input').val();
-    //         inputArr.push(formInput);
-    //         console.log(inputArr);
-    //     // };
-        
-        
-    // });
-
-
-    // $('.saveBtn').on('click', (event) => {
-    //     event.preventDefault();
-        
-    //     //for (var i=0; i < timeSlots.length; i++) {
-    //         //var saveInput = timeSlots.input;
-    //         var userInput = $('#input').val();
-    //         saveInput = userInput;
-    //         console.log(saveInput);
-    //     //};
-        
-        
-    // });
+  
 
     
-
-    // $('.saveBtn').on('click', (event) => {
-    //     event.preventDefault();
-    //     var userInput = $('#input').val();
-    //     var saveArray = $('#input').attr('name');
-    //     // saveArray.push(userInput);
-    //     console.log(userInput);
-        
-    // });
-
-    // $('.saveBtn').on('click', (event) => {
-    //     event.preventDefault();
-    //     var userInput = $('#input').val();
-    //     var saveArray = $('#input').attr('name');
-    //     // saveArray.push(userInput);
-    //     console.log(userInput);
-        
-    // });
-
-
-
-
-
     $('.saveBtn').on('click', (event) => {
         event.preventDefault();
+        //var userInputs = [];
+        // Update input fields in timeslots.js
         for (var i=0; i < timeSlots.length; i++) {
             var userInput = $(event.currentTarget).prev().val();
             var userInputIndex = $(event.currentTarget).attr('index');
@@ -128,12 +68,73 @@ $( document ).ready(function() {
                 timeSlots[userInputIndex].input = userInput;
             } else {
                 timeSlots[userInputIndex].input = '';
-            }
+            };
+            //userInputs.push(timeSlots[i].input);
         };
-        console.log(timeSlots);
+        
+        //console.log(userInputs);
+        localStorage.setItem('userInputs', JSON.stringify(timeSlots));
+        //localStorage.getItem(userInputs);
     });
 
+    // $('.saveBtn').on('click', (event) => {
+    //     event.preventDefault();
+        
+    //     // Update input fields in timeslots.js
+    //     var textInput = $(this).siblings("input").attr("index");
+    //     var textVal = $(this).siblings("input").val();
+    //     localStorage.setItem(textInput, textVal);
+    //     var lsVal = localStorage.getItem(textInput);
+    //     $(this).siblings("input").text(lsVal);
+    // });
+
+
+
+
+    $('.saveBtn').on('click', (event) => {
+        event.preventDefault();
+       
+        // Update input fields in timeslots.js
+        for (var i=0; i < timeSlots.length; i++) {
+            var userInput = $(event.currentTarget).prev().val();
+            var userInputIndex = $(event.currentTarget).attr('index');
+            if (userInput) {
+                timeSlots[userInputIndex].input = userInput;
+            } else {
+                timeSlots[userInputIndex].input = '';
+            };
+            
+        };
+        
+        // console.log(timeSlots);
+
+        getSetLocalStorage();
+       
+        
+        
+
+        // for (var i=0; i < localStorage.length; i++) {
+        //     var key = localStorage.timeSlots[i];
+        //     var item = JSON.parse(localStorage.getItem(key));
+        // }
+
+        // var test = [3, 56, 56, 2543];
+
+        // var stringifyTest = JSON.stringify(test);
+        // localStorage.setItem('userInputs', stringifyTest);
+
+       
+    });
+
+    function getSetLocalStorage() {
+        localStorage.setItem('userInputs', JSON.stringify(timeSlots));
+        JSON.parse(localStorage.getItem('userInputs'));
+    }
+    
     
 
+   
+
+    
 
 });
