@@ -20,11 +20,13 @@ $( document ).ready(function() {
         // Add class to form tag and append to container div 
         var row = $('<form class="row">');
         $('.container').append(row);
-        // Add classes and text to div tag
+
+        // Add attributes to div tag, add text and styling
         var hour = $('<label for="input" class="hour col-1">').text(timeSlot.name);
-        $(hour).css({
+        hour.css({
             textAlign: 'center'
         })
+
         // Check past/present/future and assign class accordingly
         var currentHour = dayjs().format('HH');
         var plannerHour = timeSlot.hour;
@@ -35,13 +37,16 @@ $( document ).ready(function() {
         } else {
             eventInput = $('<textarea id="input" class="future col-10" name="event-text" rows="3">');
         };
-        // Add classes to submit button and remove border
-        var submitButton = $('<input class="saveBtn col-1" type="submit" value="Save">')
-        $(submitButton).css({
+        eventInput.attr('index', timeSlot.slotNumber);
+
+        // Add attributes to submit button, add index, remove border
+        var submitButton = $('<input class="saveBtn col-1" type="submit" value="Save">').attr('index', timeSlot.slotNumber);
+        submitButton.css({
             borderRight: 'none',
             borderTop: 'none',
             borderBottom: 'none',
         })
+        
         // Append to form tag
         row.append(hour, eventInput, submitButton);
 
@@ -77,18 +82,67 @@ $( document ).ready(function() {
     // });
 
 
+    // $('.saveBtn').on('click', (event) => {
+    //     event.preventDefault();
+        
+    //     //for (var i=0; i < timeSlots.length; i++) {
+    //         //var saveInput = timeSlots.input;
+    //         var userInput = $('#input').val();
+    //         saveInput = userInput;
+    //         console.log(saveInput);
+    //     //};
+        
+        
+    // });
+
+    
+
+    // $('.saveBtn').on('click', (event) => {
+    //     event.preventDefault();
+    //     var userInput = $('#input').val();
+    //     var saveArray = $('#input').attr('name');
+    //     // saveArray.push(userInput);
+    //     console.log(userInput);
+        
+    // });
+
+    // $('.saveBtn').on('click', (event) => {
+    //     event.preventDefault();
+    //     var userInput = $('#input').val();
+    //     var saveArray = $('#input').attr('name');
+    //     // saveArray.push(userInput);
+    //     console.log(userInput);
+        
+    // });
+
+
+
+
+
     $('.saveBtn').on('click', (event) => {
         event.preventDefault();
+        var arr = ['', '', '', '', '', '', '', '', ''];
         
-        // for (var i=0; i < timeSlots.length; i++) {
-            var saveInput = timeSlots.input;
-            var userInput = $('#input').val();
-            saveInput = userInput;
-            console.log(saveInput);
-        // };
         
+        // var saveArray = $('#input').attr('name');
+        // saveArray.push(userInput);
+
+       
+        // var userInput = $('#input').val();
+        // var userInputIndex = $('#input').attr('index');
+        // arr.splice(userInputIndex, 1, userInput)
+
+        console.log($(event.currentTarget).attr('index'));
+       
+
+
+        console.log(userInput);
+      //  console.log(userInputTimeSlot);
+        console.log(arr);
         
     });
+
+    
 
 
 });
