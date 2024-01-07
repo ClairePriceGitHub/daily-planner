@@ -126,6 +126,8 @@ $( document ).ready(function() {
             var userInputIndex = $(event.currentTarget).attr('index');
             if (userInput) {
                 timeSlots[userInputIndex].input = userInput;
+            } else {
+                timeSlots[userInputIndex].input = '';
             }
         };
         console.log(timeSlots);
