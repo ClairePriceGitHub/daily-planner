@@ -1,43 +1,19 @@
 $( document ).ready(function() {
 
-    // Function to show todays date in header
+    // FUNCTION to show todays date in header
     function dateToday() {
         var today = dayjs().format('dddd, MMMM D') + ('th');
         $('#currentDay').text(today);
     }
     dateToday();
 
-    function checkLocalStorage() {
-        var getTimeSlots = JSON.parse(localStorage.getItem('userInputs'));
-       
-            
-            $('#input').text(getTimeSlots[0].input);
-           
-           
-        
-        
-       }
-
-        
-        //console.log(getTimeSlots[0].input);
-    //     if (getTimeSlots) {
-    //         timeSlots.forEach(function(timeSlot) {
-    //             timeSlot.input.push(getTimeSlots);
-    //         });
-    //         }
-    //    console.log(timeSlots);     
-       
-        
-    
-    
-
-    
-    
-
-
    
+       
 
-    // Function to add time slots to container div in index.HTML
+
+
+
+    // FUNCTION to add Form tag and contents to container div in index.HTML
     timeSlots.forEach(function(timeSlot) {
         // Add class to form tag and append to container div 
         var row = $('<form class="row">');
@@ -53,11 +29,11 @@ $( document ).ready(function() {
         var currentHour = dayjs().format('HH');
         var plannerHour = timeSlot.hour;
         if (plannerHour == currentHour) {
-            var eventInput = $('<textarea id="input" class="present col-10" name="event-text" rows="3">');
+            var eventInput = $('<textarea id="input" class="present col-10" name="event-text" rows="3">').attr('index', timeSlot.slotNumber);
         } else if (plannerHour < currentHour) {
-            eventInput = $('<textarea id="input" class="past col-10" name="event-text" rows="3">');
+            eventInput = $('<textarea id="input" class="past col-10" name="event-text" rows="3">').attr('index', timeSlot.slotNumber);
         } else {
-            eventInput = $('<textarea id="input" class="future col-10" name="event-text" rows="3">');
+            eventInput = $('<textarea id="input" class="future col-10" name="event-text" rows="3">').attr('index', timeSlot.slotNumber);
         };
 
         // Add attributes to submit button, add index, remove border
@@ -72,18 +48,59 @@ $( document ).ready(function() {
         row.append(hour, eventInput, submitButton);
     });
 
-    
+    // FUNCTION to set and get local storage
     function getSetLocalStorage() {
         localStorage.setItem('userInputs', JSON.stringify(timeSlots));
         JSON.parse(localStorage.getItem('userInputs'));
     };
     
 
-   
+     // FUNCTION to check and display local storage
+     function checkLocalStorage() {
+        var getTimeSlots = JSON.parse(localStorage.getItem('userInputs'));
+        // var arrTimeSlots = [];
+        // for (var i=0; i < getTimeSlots.length; i++) {
+        //     arrTimeSlots.push(getTimeSlots[i].input);
+        // }
+       
+             
+        // $('#input').text(getTimeSlots[0].input);
 
-  
-    
+       
+        // $('#input').text(arrTimeSlots(index));
+
+
+
+        // var findInputs = $('.row #input');
+        // console.log($(findInputs).attr('index'));
+
+
+           
+        
+
+
+        // $('.row #input').each(function(index) {
+        //     console.log($(this).text(arrTimeSlots[index]));
+        // });   
+
+
+        $('.row #input').each(function(index) {
+            console.log($(this).text(getTimeSlots[index].input));
+        });  
+
+
+
+
+
+        // $('.row #input').each(function(index) {
+        //    // console.log(index +  $(this).text());
+        //     $(this).text(arrTimeSlots);
+        // });
+        
+        
+    }
     checkLocalStorage();
+      
    
 
  
@@ -101,8 +118,6 @@ $( document ).ready(function() {
             
         };
         getSetLocalStorage();
-
-
     });
 
   
