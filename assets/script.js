@@ -1,4 +1,18 @@
 $( document ).ready(function() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     // FUNCTION to show todays date in header
     function dateToday() {
         var today = dayjs().format('dddd, MMMM D') + ('th');
@@ -7,7 +21,7 @@ $( document ).ready(function() {
     dateToday();
 
     // Dynamically add p tag to existing container div, confirming save to local storage // Set to hide
-    var confirm = $('<p class="time-block">').text('Event added to local storage');
+    var confirm = $('<p class="time-block">').text('event added to local storage');
     $('.container').append(confirm);
     confirm.hide();
 
@@ -34,26 +48,18 @@ $( document ).ready(function() {
         } else {
             eventInput.addClass('future col-10');
         };
-        // Add attributes to submit button, add index, remove border
-        // var submitButton = $('<input class="saveBtn col-1" type="submit" value="img scr="images/1_floppy-disk.png">').attr('index', timeSlot.slotNumber);
-
-        //var submitButton = $('<input class="saveBtn col-1" type="image" src="images/1_floppy-disk.png" >').attr('index', timeSlot.slotNumber);
+      
 
         var submitButton = $('<button class="saveBtn col-1" >').attr('index', timeSlot.slotNumber);
-
         submitButton.css({
             borderRight: 'none',
             borderTop: 'none',
-            borderBottom: 'none',
+            borderBottom: 'none'
         });
         // Append to form tag
         row.append(hour, eventInput, submitButton);
 
-
-        //var submitBtnContainer = $('<span class="saveBtnContainer">');
-        var submitBtnImg = $('<img scr="../images/1_floppy-disk.png" width="30px" height="30px">');
-        
-        //submitButton.append(submitBtnContainer);
+        var submitBtnImg = $('<img src="images/1_floppy-disk.png" width="30px" height="30px">');
         submitButton.append(submitBtnImg);
     });
 
