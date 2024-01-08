@@ -6,19 +6,12 @@ $( document ).ready(function() {
     };
     dateToday();
 
-    
-        var confirm = $('<p>').text('Event added to local storage');
-        $('.container').append(confirm);
-        confirm.hide();
+    // Dynamically add p tag to existing container div, confirming save to local storage // Set to hide
+    var confirm = $('<p class="time-block">').text('Event added to local storage');
+    $('.container').append(confirm);
+    confirm.hide();
 
-        
-
-       
-
-
-
-
-    // METHOD to dynamically add Form tag and other contents tags to existing container div 
+    // Dynamically add Form tag and other contents tags to existing container div 
     timeSlots.forEach(function(timeSlot) {
         // Add class to form tag and append to container div 
         var row = $('<form class="row">');
@@ -83,7 +76,7 @@ $( document ).ready(function() {
         confirm.show();
         setInterval(function() {
             confirm.hide();
-            }, 1000);
+            }, 2000);
     };
     
     // FUNCTION to update timeSlots.input fields and save user input to local storage
