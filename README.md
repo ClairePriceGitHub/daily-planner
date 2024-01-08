@@ -4,7 +4,7 @@
 
 Project to create a Work Day Scheduler to keep track of work events during the day, allowing the user to improve organisation and efficiency. The scheduler runs in the browser and features dynamically updated HTML and CSS, powered by jQuery. 
 
-HTML and CSS starter code was provided so I was required to create and organise JavaScript files in the most appropriate manner. I used DOM manipulation to create the content needed and assign attributes, to then manipulate and ensure the scheduler worked correctly. Day.js has also been incorporated into the project for dates and time functionality, showing different colour backgrounds for past, present and future times. 
+HTML and CSS starter code was provided so I was required to create and organise JavaScript files in the most appropriate manner. I used DOM manipulation to create the content needed and assign attributes, to then manipulate and ensure the scheduler worked correctly. Day.js has also been incorporated into the project for dates and time functionality, showing different colour backgrounds for past, present and future times. Bootstrap has been used to create the table.
 
 On completion of this project I have developed my knowledge of using local storage to save and retrieve data, along with the use of third-party API’s. I have worked on considering and combining differing JavaScript techniques to create the project using clean, readable code, further developing my knowledge of JavaScript.
  
