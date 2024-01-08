@@ -1,8 +1,4 @@
 $( document ).ready(function() {
-
-    
-
-
     // FUNCTION to show todays date in header
     function dateToday() {
         var today = dayjs().format('dddd, MMMM D') + ('th');
@@ -10,69 +6,7 @@ $( document ).ready(function() {
     }
     dateToday();
 
-
-    // FUNCTION to set and get local storage
-    function setLocalStorage() {
-        localStorage.setItem('userInputs', JSON.stringify(timeSlots));
-        
-        // var getTimeSlots = JSON.parse(localStorage.getItem('userInputs'));
-        // for (var i=0; i < timeSlots.length; i++) {
-        //     timeSlots[i].input = getTimeSlots[i].input;
-        // }
-    };
-
-    function getLocalStorage() {
-        JSON.parse(localStorage.getItem('userInputs'));
-    }
-
-
- // FUNCTION to check and display local storage
- function updateDisplay() {
-    var getTimeSlots = JSON.parse(localStorage.getItem('userInputs'));
-    
-    
-    //console.log(arrTimeSlots);
-         
-    // $('#input').text(getTimeSlots[0].input);
-
-   
-    // $('#input').text(arrTimeSlots(index));
-
-
-
-    // var findInputs = $('.row #input');
-    // console.log($(findInputs).attr('index'));
-
-
-       
-    
-
-
-    // $('.row #input').each(function(index) {
-    //     console.log($(this).text(arrTimeSlots[index]));
-    // });   
-
-
-    $('.row #input').each(function(index) {
-        $(this).text(getTimeSlots[index].input);
-    });  
-
-
-
-
-
-    // $('.row #input').each(function(index) {
-    //    // console.log(index +  $(this).text());
-    //     $(this).text(arrTimeSlots);
-    // });
-    
-    
-}
-
-
-
-
-    // FUNCTION to add Form tag and contents to container div in index.HTML
+    // FUNCTION to dynamically add Form tag and other contents tags to existing container div 
     timeSlots.forEach(function(timeSlot) {
         // Add class to form tag and append to container div 
         var row = $('<form class="row">');
@@ -107,38 +41,26 @@ $( document ).ready(function() {
         row.append(hour, eventInput, submitButton);
     });
 
-    
-    updateDisplay();
-   
+    // FUNCTION to save to local storage
+    function setLocalStorage() {
+        localStorage.setItem('userInputs', JSON.stringify(timeSlots));
+    };
 
- 
+    // FUNCTION to get data from local storage and add to textarea tag values
+    function updateDisplay() {
+        var getTimeSlots = JSON.parse(localStorage.getItem('userInputs'));
+        $('.row #input').each(function(index) {
+            $(this).text(getTimeSlots[index].input);
+        });  
+    }
+    updateDisplay();
+    
+    // FUNCTION to update timeSlots.input fields and save user input to local storage
     $('.saveBtn').on('click', (event) => {
         event.preventDefault();
-        
-        // Update input fields in timeslots.js
-        // for (var i=0; i < timeSlots.length; i++) {
-        //     var userInput = $(event.currentTarget).prev().val();
-        //     var userInputIndex = $(event.currentTarget).attr('index');
-        //     if (userInput) {
-        //         timeSlots[userInputIndex].input = userInput;
-        //     } else {
-        //         timeSlots[userInputIndex].input = '';
-        //     };
-            
-        // };
-
         $('.row #input').each(function(index) {
-           // $(this).val() = timeSlot[index].input;
             timeSlots[index].input = $(this).val();
         }); 
-
         setLocalStorage();
     });
-
-  
-    
-   
-
-    
-
 });
