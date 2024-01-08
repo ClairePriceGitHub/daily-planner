@@ -30,7 +30,7 @@ $( document ).ready(function() {
             borderTop: 'none',
             borderBottom: 'none'
         });
-        var $submitBtnImg = $('<img src="images/1_floppy-disk.png" width="30px" height="30px">');
+        var $submitBtnImg = $('<img src="images/1_floppy-disk.png" width="20px" height="20px">');
 
         // Append form tag to container div 
         $('.container').append($row);
