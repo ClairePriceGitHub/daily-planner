@@ -23,6 +23,7 @@ $( document ).ready(function() {
         var $currentHour = dayjs().format('HH');
         var plannerHour = timeSlot.hour;
         var $eventInput = $('<textarea id="input" name="event-text" rows="3">').attr('index', timeSlot.slotNumber);
+        $eventInput.css('color', 'black');
         var $submitButton = $('<button class="saveBtn col-1" >').attr('index', timeSlot.slotNumber);
         $submitButton.css({
             borderRight: 'none',
