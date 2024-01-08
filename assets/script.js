@@ -6,13 +6,30 @@ $( document ).ready(function() {
     };
     dateToday();
 
-    // FUNCTION to dynamically add Form tag and other contents tags to existing container div 
+    
+        var confirm = $('<p>').text('Event added to local storage');
+        $('.container').append(confirm);
+        confirm.hide();
+
+        
+
+       
+
+
+
+
+    // METHOD to dynamically add Form tag and other contents tags to existing container div 
     timeSlots.forEach(function(timeSlot) {
         // Add class to form tag and append to container div 
         var row = $('<form class="row">');
         $('.container').append(row);
         // Add attributes to label tag, add text and styling
-        var hour = $('<label for="input" class="hour col-1">').text(timeSlot.name).css('textAlign', 'center');
+        var hour = $('<label for="input" class="hour col-1">').text(timeSlot.name);
+        hour.css({
+            display: 'flex',
+            textAlign: 'center',
+            alignItems: 'center'
+        });
         // Add attributes to textarea tag // Check past/present/future and assign class accordingly
         var currentHour = dayjs().format('HH');
         var plannerHour = timeSlot.hour;
@@ -25,7 +42,12 @@ $( document ).ready(function() {
             eventInput.addClass('future col-10');
         };
         // Add attributes to submit button, add index, remove border
-        var submitButton = $('<input class="saveBtn col-1" type="submit" value="Save">').attr('index', timeSlot.slotNumber);
+        // var submitButton = $('<input class="saveBtn col-1" type="submit" value="img scr="images/1_floppy-disk.png">').attr('index', timeSlot.slotNumber);
+
+        //var submitButton = $('<input class="saveBtn col-1" type="image" src="images/1_floppy-disk.png" >').attr('index', timeSlot.slotNumber);
+
+        var submitButton = $('<button class="saveBtn col-1" >').attr('index', timeSlot.slotNumber);
+
         submitButton.css({
             borderRight: 'none',
             borderTop: 'none',
@@ -33,6 +55,13 @@ $( document ).ready(function() {
         });
         // Append to form tag
         row.append(hour, eventInput, submitButton);
+
+
+        //var submitBtnContainer = $('<span class="saveBtnContainer">');
+        var submitBtnImg = $('<img scr="../images/1_floppy-disk.png" width="30px" height="30px">');
+        
+        //submitButton.append(submitBtnContainer);
+        submitButton.append(submitBtnImg);
     });
 
     // FUNCTION to save to local storage
@@ -48,6 +77,14 @@ $( document ).ready(function() {
         });  
     };
     updateDisplay();
+
+    // FUNCTION to confirm save to local storage 
+    function saveConfirm() {
+        confirm.show();
+        setInterval(function() {
+            confirm.hide();
+            }, 1000);
+    };
     
     // FUNCTION to update timeSlots.input fields and save user input to local storage
     $('.saveBtn').on('click', (event) => {
@@ -56,5 +93,6 @@ $( document ).ready(function() {
             timeSlots[index].input = $(this).val();
         }); 
         setLocalStorage();
+        saveConfirm();
     });
 });
