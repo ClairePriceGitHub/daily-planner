@@ -52,12 +52,14 @@ $( document ).ready(function() {
         localStorage.setItem('userInputs', JSON.stringify(timeSlots));
     };
 
-    // FUNCTION to get data from local storage and add to textarea tag values
+    // FUNCTION to check if there is local storage saved data and get to add textarea tag values
     function updateDisplay() {
         var $getTimeSlots = JSON.parse(localStorage.getItem('userInputs'));
-        $('.row #input').each(function(index) {
-            $(this).text($getTimeSlots[index].input);
-        });  
+        if ($getTimeSlots) {
+            $('.row #input').each(function(index) {
+                $(this).text($getTimeSlots[index].input);
+            });  
+        }
     };
     updateDisplay();
 
