@@ -2,13 +2,13 @@ var timeSlots = [
     {
         slotNumber: 0,
         name: '9am',
-        hour: 0,
+        hour: 9,
         input: ''
     },
     {
         slotNumber: 1,
         name: '10am',
-        hour: 1,
+        hour: 10,
         input: ''
     },
     {
