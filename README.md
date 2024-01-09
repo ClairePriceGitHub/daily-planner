@@ -19,7 +19,7 @@ Open in the browser, input events in the correct time slot as needed and click t
 
 https://clairepricegithub.github.io/work-day-scheduler/
 
-
+![screenshot](images/2_screenshot.png)
 
 ## Credits
 
