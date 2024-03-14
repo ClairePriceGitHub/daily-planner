@@ -17,7 +17,7 @@ N/A
 
 Open in the browser, input events in the correct time slot as needed and click the save button which initiates save confirmation. Events are saved to local storage and will remain on refresh or closing the window. Remove events by deleting and clicking the save button
 
-https://clairepricegithub.github.io/work-day-scheduler/
+https://priceclaire.github.io/work-day-scheduler/
 
 ![screenshot](images/2_screenshot.png)
 
